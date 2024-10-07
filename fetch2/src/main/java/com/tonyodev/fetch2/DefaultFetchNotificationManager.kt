@@ -62,7 +62,11 @@ abstract class DefaultFetchNotificationManager(context: Context) : FetchNotifica
     }
 
     override fun unregisterBroadcastReceiver() {
-        context.unregisterReceiver(broadcastReceiver)
+        try {
+            context.unregisterReceiver(broadcastReceiver)
+        } catch (_: Exception) {
+
+        }
     }
 
     override fun createNotificationChannels(context: Context, notificationManager: NotificationManager) {
@@ -156,6 +160,7 @@ abstract class DefaultFetchNotificationManager(context: Context) : FetchNotifica
                                         actionType: DownloadNotification.ActionType): PendingIntent {
         synchronized(downloadNotificationsMap) {
             val intent = Intent(notificationManagerAction)
+            intent.setPackage(context.packageName)
             intent.putExtra(EXTRA_NAMESPACE, downloadNotification.namespace)
             intent.putExtra(EXTRA_DOWNLOAD_ID, downloadNotification.notificationId)
             intent.putExtra(EXTRA_NOTIFICATION_ID, downloadNotification.notificationId)
@@ -179,6 +184,7 @@ abstract class DefaultFetchNotificationManager(context: Context) : FetchNotifica
                                              actionType: DownloadNotification.ActionType): PendingIntent {
         synchronized(downloadNotificationsMap) {
             val intent = Intent(notificationManagerAction)
+            intent.setPackage(context.packageName)
             intent.putExtra(EXTRA_NOTIFICATION_GROUP_ID, groupId)
             intent.putExtra(EXTRA_DOWNLOAD_NOTIFICATIONS, ArrayList(downloadNotifications))
             intent.putExtra(EXTRA_GROUP_ACTION, true)
