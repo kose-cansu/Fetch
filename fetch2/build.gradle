@@ -76,7 +76,7 @@ dependencies {
 ext {
     releaseName = 'tonyofrancis-fetch'
     releaseDescription = 'Fetch is a simple, powerful, customizable file download manager library for Android.'
-    releaseGroupId = 'com.github.kose-cansu'
+    releaseGroupId = 'com.github.tonyofrancis'
     releaseArtifactId = 'fetch2'
     releaseVersion = library_version
 }

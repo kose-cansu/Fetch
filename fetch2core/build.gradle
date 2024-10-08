@@ -66,7 +66,7 @@ dependencies {
 ext {
     releaseName = 'tonyofrancis-fetch'
     releaseDescription = 'Fetch Core Library'
-    releaseGroupId = 'com.github.kose-cansu'
+    releaseGroupId = 'com.github.tonyofrancis'
     releaseArtifactId = 'fetch2core'
     releaseVersion = library_version
 }
